@@ -21,8 +21,14 @@ body, html {
 }
 
 .marionette {
-    position: relative;
+    position: absolute;
     width: 90px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 265px;
 }
 
 .trunk {
@@ -56,15 +62,15 @@ body, html {
     top: 60px;
 }
 
-.upper-limb-left, .upper-limb-right {
+.upper-member-left, .upper-member-right {
     position: absolute;
     top: 65px;
     width: 20px;
     z-index: 2;
 }
 
-.upper-limb-left { left: 0; }
-.upper-limb-right { right: 0; }
+.upper-member-left { left: 0; }
+.upper-member-right { right: 0; }
 
 .arm {
     width: 20px;
@@ -120,6 +126,7 @@ body, html {
     height: 50px;
     border-radius: 10px;
     top: 60px;
+    transform-origin: top center;
 }
 
 .foot {
@@ -127,7 +134,7 @@ body, html {
     height: 15px;
     background-color: coral;
     border-radius: 10px;
-    top: 110px;
+    top: 50px;
 }
 
 .thigh, .leg, .foot {
@@ -139,3 +146,21 @@ body, html {
 
 .lower-member-left .foot { left: -20px; }
 .lower-member-right .foot { right: -20px; }
+
+/* manual */
+
+.manual {
+    position: fixed;
+    bottom: 0;
+}
+
+.press {
+    display: inline-block;
+    padding: 2px 10px;
+    box-shadow: 0 0 0 1px;
+    margin: 2px;
+    border-radius: 2px;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+}
