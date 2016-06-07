@@ -3,37 +3,59 @@
 <head>
     <meta charset="utf-8">
     <title>Marionette Css</title>
-    <link rel="stylesheet" href="src/style.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="src/css/style.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="src/css/marionette.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="src/css/skins/skins.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
+
+    <div class="skins">
+        <button class="btn-skin default" type="button" name="button">default</button>
+        <button class="btn-skin anatomic" type="button" name="button">anatomic</button>
+        <button class="btn-skin happy" type="button" name="button">happy</button>
+    </div>
 
     <div class="manual"></div>
 
     <div class="center">
         <div class="marionette">
             <div class="trunk">
-                <div class="head"></div>
-                <div class="body"></div>
-            </div>
-            <div class="upper-member-left">
-                <div class="arm"></div>
-                <div class="forearm">
-                    <div class="hand"></div>
+                <div class="head">
+                    <div class="connector neck"></div>
                 </div>
-            </div>
-            <div class="upper-member-right">
-                <div class="arm"></div>
-                <div class="forearm">
-                    <div class="hand"></div>
+                <div class="body">
+                    <div class="connector middle"></div>
+                    <div class="connector left"></div>
+                    <div class="upper-member-left">
+                        <div class="arm"></div>
+                        <div class="connector p2"></div>
+                        <div class="forearm">
+                            <div class="connector p3"></div>
+                            <div class="hand"></div>
+                        </div>
+                    </div>
+                    <div class="connector right"></div>
+                    <div class="upper-member-right">
+                        <div class="arm"></div>
+                        <div class="connector p2"></div>
+                        <div class="forearm">
+                            <div class="connector p3"></div>
+                            <div class="hand"></div>
+                        </div>
+                    </div>
+                    <div class="chest"></div>
+                    <div class="abdomen"></div>
                 </div>
             </div>
             <div class="lower-member-left">
+                <div class="connector p4"></div>
                 <div class="thigh"></div>
                 <div class="leg">
                     <div class="foot"></div>
                 </div>
             </div>
             <div class="lower-member-right">
+                <div class="connector p4"></div>
                 <div class="thigh"></div>
                 <div class="leg">
                     <div class="foot"></div>
@@ -42,7 +64,8 @@
         </div>
     </div>
 
-    <script src="src/jquery.js" charset="utf-8"></script>
-    <script src="src/script.js" charset="utf-8"></script>
+    <script src="src/js/jquery.js" charset="utf-8"></script>
+    <script src="src/js/script.js" charset="utf-8"></script>
+    <script src="src/js/skin.js" charset="utf-8"></script>
 </body>
 </html>

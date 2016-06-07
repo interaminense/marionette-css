@@ -1,0 +1,8 @@
+.anatomic .head, .anatomic .connector,
+.anatomic .arm, .anatomic .forearm,
+.anatomic .hand, .anatomic .abdomen,
+.anatomic .chest, .anatomic .thigh,
+.anatomic .leg, .anatomic .foot {
+    background-color: transparent;
+    border: 1px solid #000;
+}

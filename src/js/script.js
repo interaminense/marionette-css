@@ -6,6 +6,7 @@ var lowerMemberLeft  = $(".lower-member-left");
 var lowerMemberRight = $(".lower-member-right");
 var lowerLegLeft     = $(".lower-member-left .leg");
 var lowerLegRight    = $(".lower-member-right .leg");
+var trunk            = $(".trunk");
 var manual           = $(".manual");
 
 var velocity = 10;
@@ -18,7 +19,8 @@ var count = {
     "lowerMemberLeft"  : 0,
     "lowerMemberRight" : 0,
     "lowerLegLeft"     : 0,
-    "lowerLegRight"    : 0
+    "lowerLegRight"    : 0,
+    "trunk"            : 0,
 }
 
 var key = {
@@ -37,7 +39,9 @@ var key = {
     "I" : 73, //up lowerMemberRight
     "K" : 75, //down lowerMemberRight
     "O" : 79, //up lowerLegRight
-    "L" : 76 //down lowerLegRight
+    "L" : 76, //down lowerLegRight
+    "Z" : 90, //move trunk to left
+    "X" : 88 //move trunk to right
 }
 
 $(document).keydown(function( event ) {
@@ -91,11 +95,20 @@ $(document).keydown(function( event ) {
         case key.L:
             count.lowerLegRight = rotateMember(lowerLegRight, event, "down", count.lowerLegRight);
             break;
+        case key.Z:
+            count.trunk = rotateMember(trunk, event, "down", count.trunk);
+            break;
+        case key.X:
+            count.trunk = rotateMember(trunk, event, "up", count.trunk);
+            break;
     }
+
+    console.log(event);
 
 });
 
 function rotateMember(element, key, direction, count) {
+
     if(direction == "up"){
         count = count + velocity;
     }else{

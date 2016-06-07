@@ -1,0 +1,15 @@
+.happy .head, .happy .abdomen, .happy .chest {
+    background-color: red;
+}
+
+.happy .connector {
+    background-color: black;
+}
+
+.happy .arm, .happy .forearm, .happy .hand {
+    background-color: yellow;
+}
+
+.happy .thigh, .happy .leg, .happy .foot {
+    background-color: green;
+}

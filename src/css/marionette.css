@@ -1,0 +1,209 @@
+.marionette {
+    position: absolute;
+    width: 95px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 278px;
+}
+
+.trunk {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform-origin: bottom center;
+    width: 95px;
+    height: 142px;
+}
+
+.head {
+    width: 60px;
+    height: 60px;
+    background-color: #000;
+    border-radius: 25px 25px 40px 40px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+}
+
+.body {
+    width: 55px;
+    height: 80px;
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 62px;
+}
+
+.chest {
+    width: 100%;
+    height: 60%;
+    background-color: #000;
+    border-radius: 6px 6px 10px 10px;
+    top: 0;
+}
+
+.abdomen {
+    width: 80%;
+    height: calc(40% + 1px);
+    background-color: #000;
+    border-radius: 0px 0px 6px 6px;
+    z-index: 1;
+    top: 47px;
+}
+
+.abdomen, .chest {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.connector {
+    background-color: #000;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.body .connector.left, .body .connector.right {
+    width: 25px;
+    height: 25px;
+    top: 0;
+}
+
+.body .connector.left {
+    left: -70px;
+}
+
+.body .connector.right {
+    right: -70px;
+}
+
+.body .connector.middle {
+    width: 30px;
+    height: 30px;
+    top: 65px;
+    z-index: 0;
+}
+
+.upper-member-left .connector.p2, .upper-member-right .connector.p2 {
+    width: 20px;
+    height: 20px;
+    top: 34px;
+}
+
+.upper-member-left .connector.p3, .upper-member-right .connector.p3 {
+    width: 14px;
+    height: 14px;
+    top: 33px;
+}
+
+.upper-member-left, .upper-member-right {
+    position: absolute;
+    top: 15px;
+    width: 25px;
+    z-index: 2;
+    height: 105px;
+    transform-origin: top center;
+}
+
+.upper-member-left { left: -20px; }
+.upper-member-right { right: -20px; }
+
+.arm {
+    width: 19px;
+    height: 45px;
+    background-color: #000;
+    border-radius: 10px;
+    top: 0;
+    z-index: 1;
+}
+
+.forearm {
+    width: 14px;
+    height: 40px;
+    background-color: #000;
+    border-radius: 10px;
+    top: 47px;
+    transform-origin: top center;
+}
+
+.hand {
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    border-radius: 50%;
+    top: 40px;
+    left: -3px !important;
+}
+
+.arm, .forearm, .hand, .connector {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.lower-member-left .connector.p4, .lower-member-right .connector.p4 {
+    width: 20px;
+    height: 20px;
+    top: 60px;
+}
+
+.lower-member-left, .lower-member-right {
+    position: absolute;
+    top: 145px;
+    width: 40px;
+    height: 125px;
+    transform-origin: top center;
+}
+
+.lower-member-left { left: 14px; }
+.lower-member-right { right: 14px; }
+
+.thigh {
+    background-color: #000;
+    width: 25px;
+    height: 70px;
+    border-radius: 10px;
+}
+
+.leg {
+    background-color: #000;
+    width: 18px;
+    height: 50px;
+    border-radius: 10px;
+    top: 72px;
+    transform-origin: top center;
+}
+
+.foot {
+    width: 40px;
+    height: 15px;
+    background-color: #000;
+    border-radius: 10px;
+    top: 46px;
+}
+
+.thigh, .leg, .foot {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.lower-member-left .foot { left: -20px; }
+.lower-member-right .foot { right: -20px; }
+
+.connector.neck {
+    width: 20px;
+    height: 20px;
+    bottom: -10px;
+}
