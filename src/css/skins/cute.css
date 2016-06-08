@@ -1,0 +1,8 @@
+.cute .head, .cute .connector,
+.cute .arm, .cute .forearm,
+.cute .hand, .cute .abdomen,
+.cute .chest, .cute .thigh,
+.cute .leg, .cute .foot {
+    background-color: pink;
+    border: 1px solid #000;
+}

@@ -22,7 +22,6 @@
 .head {
     width: 60px;
     height: 60px;
-    background-color: #000;
     border-radius: 25px 25px 40px 40px;
     position: absolute;
     left: 0;
@@ -45,7 +44,6 @@
 .chest {
     width: 100%;
     height: 60%;
-    background-color: #000;
     border-radius: 6px 6px 10px 10px;
     top: 0;
 }
@@ -53,7 +51,6 @@
 .abdomen {
     width: 80%;
     height: calc(40% + 1px);
-    background-color: #000;
     border-radius: 0px 0px 6px 6px;
     z-index: 1;
     top: 47px;
@@ -67,7 +64,6 @@
 }
 
 .connector {
-    background-color: #000;
     border-radius: 50%;
     z-index: 0;
 }
@@ -120,7 +116,6 @@
 .arm {
     width: 19px;
     height: 45px;
-    background-color: #000;
     border-radius: 10px;
     top: 0;
     z-index: 1;
@@ -129,16 +124,15 @@
 .forearm {
     width: 14px;
     height: 40px;
-    background-color: #000;
     border-radius: 10px;
     top: 47px;
+    z-index: 2;
     transform-origin: top center;
 }
 
 .hand {
     width: 20px;
     height: 20px;
-    background-color: #000;
     border-radius: 50%;
     top: 40px;
     left: -3px !important;
@@ -169,14 +163,12 @@
 .lower-member-right { right: 14px; }
 
 .thigh {
-    background-color: #000;
     width: 25px;
     height: 70px;
     border-radius: 10px;
 }
 
 .leg {
-    background-color: #000;
     width: 18px;
     height: 50px;
     border-radius: 10px;
@@ -187,7 +179,6 @@
 .foot {
     width: 40px;
     height: 15px;
-    background-color: #000;
     border-radius: 10px;
     top: 46px;
 }

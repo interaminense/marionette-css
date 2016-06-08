@@ -1,0 +1,7 @@
+.default .head, .default .connector,
+.default .arm, .default .forearm,
+.default .hand, .default .abdomen,
+.default .chest, .default .thigh,
+.default .leg, .default .foot {
+    background-color: #000;
+}

@@ -1,27 +1,52 @@
-var skin = {
-    "default" : {
-        "button" : $("button.default"),
-        "class"  : "default"
-    },
-    "anatomic" : {
-        "button" : $("button.anatomic"),
-        "class"  : "anatomic"
-    },
-    "happy" : {
-        "button" : $("button.happy"),
-        "class"  : "happy"
-    }
-}
+(function($){
 
-applySkin(skin.default.button, skin.default.class);
-applySkin(skin.anatomic.button, skin.anatomic.class);
-applySkin(skin.happy.button, skin.happy.class);
+    'use strict';
 
-function applySkin(button, className) {
+    var head       = $("head")
     var marionette = $(".marionette");
-    button.click(function() {
-        marionette.removeClass().addClass("marionette").toggleClass(className);
-    });
-}
+    var skins      = $(".skins");
 
-console.log(skin);
+    // crie um arquivo css com o mesmo
+    // nome da skin abaixo dentro da pasta
+    // src/css/skins para que a skin seja aplicada
+
+    var skin = [
+        "default",
+        "anatomic",
+        "happy",
+        "cute"
+    ]
+
+    var link = [];
+    var button = [];
+
+    var applySkin = function() {
+        $(".btn-skin").click(function(event) {
+            marionette.removeClass().addClass("marionette " + event.currentTarget.classList[1]);
+        });
+    };
+
+    var createElements = function() {
+
+        for (var i = 0; i < skin.length; i++) {
+
+            link[i] = document.createElement("link");
+            link[i].rel = "stylesheet";
+            link[i].href = "src/css/skins/" + skin[i] + ".css";
+            head.append(link[i]);
+
+            button[i] = document.createElement("button");
+            button[i].type = "button";
+            button[i].className = "btn-skin " + skin[i];
+            button[i].innerHTML = skin[i];
+            skins.append(button[i]);
+
+        }
+
+        applySkin();
+
+    };
+
+    createElements();
+
+})($);
