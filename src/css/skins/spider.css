@@ -1,0 +1,54 @@
+.spider .head, .spider .connector,
+.spider .arm, .spider .forearm,
+.spider .hand, .spider .abdomen,
+.spider .chest, .spider .thigh,
+.spider .leg, .spider .foot {
+    border: 1px solid #000;
+}
+
+.spider .head:before {
+    right: 13px;
+    transform: rotate(20deg);
+}
+
+.spider .head:after {
+    left: 13px;
+    transform: rotate(-20deg);
+}
+
+.spider .head:after, .spider .head:before {
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    width: 13px;
+    height: 26px;
+    box-shadow: 0 0 0 1px;
+    border-radius: 50%;
+    top: 15px;
+}
+
+.spider .head, .spider .neck,
+.spider .connector.left, .spider
+.connector.right, .spider .chest,
+.spider .abdomen, .spider .connector.p3,
+.spider .hand, .spider .forearm,
+.spider .connector.p4, .spider
+.leg, .spider .foot {
+    background-color: red;
+}
+
+.spider .thigh, .spider .connector.middle,
+.spider .arm, .spider .connector.p2 {
+    background-color: blue;
+}
+
+.spider .chest {
+    background-image: url(http://vignette1.wikia.nocookie.net/marvelcrossroads/images/2/26/Spiderman_back_logo_by_navdbest-d5iogb0.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.spider .neck {
+    border: none;
+}

@@ -18,7 +18,8 @@
         "default",
         "anatomic",
         "happy",
-        "cute"
+        "cute",
+        "spider"
     ]
 
     var link = [];
