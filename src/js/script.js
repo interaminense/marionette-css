@@ -2,125 +2,169 @@
 
     'use strict';
 
-    var upMemberLeft     = $(".upper-member-left");
-    var upMemberRight    = $(".upper-member-right");
-    var upForearmLeft    = $(".upper-member-left .forearm");
-    var upForearmRight   = $(".upper-member-right .forearm");
-    var lowerMemberLeft  = $(".lower-member-left");
-    var lowerMemberRight = $(".lower-member-right");
-    var lowerLegLeft     = $(".lower-member-left .leg");
-    var lowerLegRight    = $(".lower-member-right .leg");
-    var trunk            = $(".trunk");
-    var manual           = $(".manual");
+    var divManual = document.createElement("div");
+    divManual.className = "manual";
+    $("body").append(divManual);
 
-    var velocity = 10;
+    var manual = $(".manual");
+    var velocity = 20;
+    var members = [
+        {
+            "name" : "upLeft",
+            "element" : $(".upper-member-left"),
+            "count" : 0,
+            "key" : [{ "code" :  81, "event" : "left", "name" : "Q" },{ "code" :  87, "event" : "right", "name" : "W" }],
+            "infoManual" : "upper"
+        },
+        {
+            "name" : "upRight",
+            "element" : $(".upper-member-right"),
+            "count" : 0,
+            "key" : [{ "code" :  69, "event" : "left", "name" : "E" },{ "code" :  82, "event" : "right", "name" : "R" }],
+            "infoManual" : "upper"
+        },
+        {
+            "name" : "upForearmLeft",
+            "element" : $(".upper-member-left .forearm"),
+            "count" : 0,
+            "key" : [{ "code" : 65, "event" : "left", "name" : "A" },{ "code" : 83, "event" : "right", "name" : "S" }],
+            "infoManual" : "upper"
+        },
+        {
+            "name" : "upForearmRight",
+            "element" : $(".upper-member-right .forearm"),
+            "count" : 0,
+            "key" : [{ "code" : 68, "event" : "left", "name" : "D" },{ "code" : 70, "event" : "right", "name" : "F" }],
+            "infoManual" : "upper"
+        },
+        {
+            "name" : "lowerLeft",
+            "element" : $(".lower-member-left"),
+            "count" : 0,
+            "key" : [{ "code" : 85, "event" : "left", "name" : "U" },{ "code" : 73, "event" : "right", "name" : "I" }],
+            "infoManual" : "lower"
+        },
+        {
+            "name" : "lowerRight",
+            "element" : $(".lower-member-right"),
+            "count" : 0,
+            "key" : [{ "code" : 79, "event" : "left", "name" : "O" },{ "code" : 80, "event" : "right", "name" : "P" }],
+            "infoManual" : "lower"
+        },
+        {
+            "name" : "lowerLegLeft",
+            "element" : $(".lower-member-left .leg"),
+            "count" : 0,
+            "key" : [{ "code" : 74, "event" : "left", "name" : "J" },{ "code" : 75, "event" : "right", "name" : "K" }],
+            "infoManual" : "lower"
+        },
+        {
+            "name" : "lowerLegRight",
+            "element" : $(".lower-member-right .leg"),
+            "count" : 0,
+            "key" : [{ "code" : 76, "event" : "left", "name" : "L" },{ "code" : 186 , "event" : "right", "name" : "Ç" }],
+            "infoManual" : "lower"
+        },
+        {
+            "name" : "trunk",
+            "element" : $(".trunk"),
+            "count" : 0,
+            "key" : [{ "code" : 39, "event" : "left", "name" : "left" },{ "code" : 37, "event" : "right", "name" : "right" }]
+        }
+    ];
 
-    var count = {
-        "upMemberLeft"     : 0,
-        "upMemberRight"    : 0,
-        "upForearmLeft"    : 0,
-        "upForearmRight"   : 0,
-        "lowerMemberLeft"  : 0,
-        "lowerMemberRight" : 0,
-        "lowerLegLeft"     : 0,
-        "lowerLegRight"    : 0,
-        "trunk"            : 0,
+    var animateMembers = function( event ) {
+
+        console.log(event.keyCode)
+
+        for (var i = 0; i < members.length; i++) {
+
+            var member = members[i];
+
+            for (var j = 0; j < member.key.length; j++) {
+
+                if(event.keyCode == member.key[j].code){
+
+                    if(member.key[j].event == "left"){
+                        member.count = member.count + velocity;
+                    }else{
+                        member.count = member.count - velocity;
+                    }
+                    member.element.css("transform", "rotate(" + member.count + "deg)");
+
+                    //add class clicked when keyDown
+                    if(member.infoManual){
+                        var keyBtn = $(".btn-key." + member.key[j].name);
+                        keyBtn.addClass("clicked");
+                    }
+
+                }
+
+            }
+        }
+
     }
 
-    var key = {
-        "Q" : 81, //up upMemberLeft
-        "A" : 65, //down upMemberLeft
-        "W" : 87, //up upForearmLeft
-        "S" : 83, //down upForearmLeft
-        "E" : 69, //up upMemberRight
-        "D" : 68, //down upMemberRight
-        "R" : 82, //up upForearmRight
-        "F" : 70, //down upForearmRight
-        "Y" : 89, //up lowerMemberLeft
-        "H" : 72, //down lowerMemberLeft
-        "U" : 85, //up lowerLegLeft
-        "J" : 74, //down lowerLegLeft
-        "I" : 73, //up lowerMemberRight
-        "K" : 75, //down lowerMemberRight
-        "O" : 79, //up lowerLegRight
-        "L" : 76, //down lowerLegRight
-        "Z" : 90, //move trunk to left
-        "X" : 88 //move trunk to right
+    var generateManual = function() {
+
+        var infoUp = document.createElement("div");
+        infoUp.className = "info-manual upper";
+        manual.append(infoUp);
+
+        var infoLower = document.createElement("div");
+        infoLower.className = "info-manual lower";
+        manual.append(infoLower);
+
+        var infoUp = $(".info-manual.upper");
+        var infoLower = $(".info-manual.lower");
+
+        for (var i = 0; i < members.length; i++) {
+
+            var member = members[i];
+
+            for (var j = 0; j < member.key.length; j++) {
+
+                if(member.infoManual){
+
+                    var keyBtn = document.createElement("div");
+                    keyBtn.className = "btn-key " + member.key[j].name;
+                    keyBtn.innerHTML = member.key[j].name;
+
+                    if(member.infoManual == "upper"){
+                        infoUp.append(keyBtn);
+                    }else{
+                        infoLower.append(keyBtn);
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    var removeAllClass = function() {
+
+        var keyBtn = $(".btn-key");
+
+        // console.log(keyBtn);
+
+        for (var i = 0; i < keyBtn.length; i++) {
+            keyBtn[i].classList.remove("clicked");
+        }
+
+
     }
 
     $(document).keydown(function( event ) {
-
-        switch (event.keyCode) {
-            case key.Q:
-            count.upMemberLeft = rotateMember(upMemberLeft, event, "up", count.upMemberLeft);
-            break;
-            case key.A:
-            count.upMemberLeft = rotateMember(upMemberLeft, event, "down", count.upMemberLeft);
-            break;
-            case key.W:
-            count.upForearmLeft = rotateMember(upForearmLeft, event, "up", count.upForearmLeft);
-            break;
-            case key.S:
-            count.upForearmLeft = rotateMember(upForearmLeft, event, "down", count.upForearmLeft);
-            break;
-            case key.E:
-            count.upMemberRight = rotateMember(upMemberRight, event, "up", count.upMemberRight);
-            break;
-            case key.D:
-            count.upMemberRight = rotateMember(upMemberRight, event, "down", count.upMemberRight);
-            break;
-            case key.R:
-            count.upForearmRight = rotateMember(upForearmRight, event, "up", count.upForearmRight);
-            break;
-            case key.F:
-            count.upForearmRight = rotateMember(upForearmRight, event, "down", count.upForearmRight);
-            break;
-            case key.Y:
-            count.lowerMemberLeft = rotateMember(lowerMemberLeft, event, "up", count.lowerMemberLeft);
-            break;
-            case key.H:
-            count.lowerMemberLeft = rotateMember(lowerMemberLeft, event, "down", count.lowerMemberLeft);
-            break;
-            case key.U:
-            count.lowerLegLeft = rotateMember(lowerLegLeft, event, "up", count.lowerLegLeft);
-            break;
-            case key.J:
-            count.lowerLegLeft = rotateMember(lowerLegLeft, event, "down", count.lowerLegLeft);
-            break;
-            case key.I:
-            count.lowerMemberRight = rotateMember(lowerMemberRight, event, "up", count.lowerMemberRight);
-            break;
-            case key.K:
-            count.lowerMemberRight = rotateMember(lowerMemberRight, event, "down", count.lowerMemberRight);
-            break;
-            case key.O:
-            count.lowerLegRight = rotateMember(lowerLegRight, event, "up", count.lowerLegRight);
-            break;
-            case key.L:
-            count.lowerLegRight = rotateMember(lowerLegRight, event, "down", count.lowerLegRight);
-            break;
-            case key.Z:
-            count.trunk = rotateMember(trunk, event, "down", count.trunk);
-            break;
-            case key.X:
-            count.trunk = rotateMember(trunk, event, "up", count.trunk);
-            break;
-        }
-
-        console.log(event);
-
+        animateMembers( event );
     });
 
-    function rotateMember(element, key, direction, count) {
+    $(document).keyup(function() {
+        removeAllClass();
+    });
 
-        if(direction == "up"){
-            count = count + velocity;
-        }else{
-            count = count - velocity;
-        }
-        element.css("transform", "rotate("+count+"deg)");
-        manual.append("<div class='press'>press "+key.key+"</div>");
-        return count;
-    }
+    generateManual();
 
 })($);

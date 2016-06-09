@@ -2,6 +2,10 @@
 
     'use strict';
 
+    var divSkin = document.createElement("div");
+    divSkin.className = "skins";
+    $("body").append(divSkin);
+
     var head       = $("head")
     var marionette = $(".marionette");
     var skins      = $(".skins");
@@ -22,6 +26,8 @@
 
     var applySkin = function() {
         $(".btn-skin").click(function(event) {
+            $(".btn-skin").removeClass("active");
+            $(this).addClass("active");
             marionette.removeClass().addClass("marionette " + event.currentTarget.classList[1]);
         });
     };
@@ -37,7 +43,10 @@
 
             button[i] = document.createElement("button");
             button[i].type = "button";
-            button[i].className = "btn-skin " + skin[i];
+            if(skin[i] == "default")
+                button[i].className = "btn-skin active " + skin[i];
+            else
+                button[i].className = "btn-skin " + skin[i];
             button[i].innerHTML = skin[i];
             skins.append(button[i]);
 

@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900);
+
 * {
     box-sizing: border-box;
     outline: none;
@@ -9,6 +11,10 @@ body, html {
     margin: 0;
 }
 
+body, button {
+    font-family: 'Roboto', sans-serif;
+}
+
 .center {
     position: absolute;
     left: 0;
@@ -17,31 +23,70 @@ body, html {
     bottom: 0;
     margin: auto;
     width: 600px;
-    height: 600px;
+    height: 360px;
 }
+
+/* manual */
+
+.btn-key, .btn-skin {
+    display: inline-block;
+    padding: 13px 0;
+    box-shadow: 0 0 0 1px #dedede, -3px -3px 0 #f0f0f0 inset, 2px 3px 3px #f0f0f0;
+    margin: 4px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 2px;
+    color: #666;
+    background-color: #fff;
+}
+
+.btn-key.clicked, .btn-skin.active {
+    box-shadow: 0 0 0 1px #dedede, 3px 3px 0 #f0f0f0 inset;
+    background-color: #fbfbfb;
+}
+
+.info-manual {
+    position: absolute;
+    width: 232px;
+    top: 110px;
+}
+
+.info-manual:before, .skins:before {
+    position: absolute;
+    top: -25px;
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.info-manual.upper { left: 10%; }
+.info-manual.lower { right: 10%; }
+
+.info-manual.upper:before { content: "Upper members"; }
+.info-manual.lower:before { content: "Lower members"; }
 
 /* skins */
 
 .skins {
     position: absolute;
-    left: 20px;
-    top: 20px;
+    left: 0;
+    top: 40px;
+    right: 0;
+    margin: auto;
+    text-align: center;
 }
 
-/* manual */
+.skins:before { content: "Skins"; }
 
-.manual {
-    position: fixed;
-    bottom: 0;
-}
-
-.press, .btn-skin {
-    display: inline-block;
-    padding: 2px 10px;
-    box-shadow: 0 0 0 1px;
-    margin: 2px;
-    border-radius: 2px;
-    font-family: Arial, sans-serif;
-    font-size: 10px;
+.btn-skin {
+    border: none;
+    height: 28px;
+    padding: 0 20px;
     text-transform: uppercase;
+    font-size: 10px;
+    width: auto;
 }
